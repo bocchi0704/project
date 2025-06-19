@@ -1,0 +1,31 @@
+今天记录一下leetcode 1512题
+
+给你一个整数数组 nums 。
+如果一组数字 (i,j) 满足 nums[i] == nums[j] 且 i < j ，就可以认为这是一组 好数对 。
+返回好数对的数目。
+
+方法一（暴力求解）：
+class Solution(object):
+    def numIdenticalPairs(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        count=0
+        n=len(nums)
+        for i in range(n):
+            for j in range(i+1,n):
+                if nums[i]==nums[j] :
+                    count+=1
+        
+        return count
+
+没有任何难度，注意j的循环条件即可
+
+
+方法二（组合计数）：
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        m = collections.Counter(nums)
+        return sum(v * (v - 1) // 2 for k, v in m.items())
+
