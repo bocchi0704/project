@@ -1,0 +1,44 @@
+leetcode 709
+给你一个字符串 s ，将该字符串中的大写字母转换成相同的小写字母，返回新的字符串。
+
+class Solution(object):
+    def toLowerCase(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        return s.lower()
+
+Python中的lower()函数可以将字符串中的大写字母改为小写字母，并返回一个新的字符串
+类似的，可以使用upper()函数将小写转换为大写
+
+
+leecode 258
+给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。返回这个结果。
+方法一（暴力求解）：
+class Solution(object):
+    def addDigits(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        while num>=10 :
+            sum=0
+            while num:
+                sum+=num%10
+                num//=10
+            num=sum
+        
+        return num
+
+方法二：
+分析可知，
+num = 0时，result = 0
+num % 9 = 0时，result = 9
+num > 0且num不为9的倍数时，result = num % 9
+综上，result = （num-1）% 9 + 1 
+
+class Solution:
+    def addDigits(self, num: int) -> int:
+        return (num - 1) % 9 + 1 if num else 0
+
